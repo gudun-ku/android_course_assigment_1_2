@@ -1,4 +1,4 @@
-package com.beloushkin.android.learn.assigment_1_2;
+package com.beloushkin.android.learn.assigment_1_2.utils;
 
 import android.content.Context;
 import android.widget.Toast;

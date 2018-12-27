@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    tools:context=".MainActivity">
+    tools:context=".screens.SettingsFragment">
+
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/activity_settings"
+        android:id="@+id/app_settings"
         android:name="com.beloushkin.android.learn.assigment_1_2.screens.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 </FrameLayout>

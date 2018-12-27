@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.beloushkin.android.learn.assigment_1_2.utils.ToastHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     private final ToastHelper mToastHelper = new ToastHelper();
