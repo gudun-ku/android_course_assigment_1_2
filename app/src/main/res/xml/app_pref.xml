@@ -3,12 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <RadioButtonPreference
+    <com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference
         android:defaultValue="@string/pref_search_yandex_value"
         android:key="@string/pref_search_yandex_key"
         android:summaryOff="Off"
         android:summaryOn="On"
         android:title="@string/pref_search_yandex_label" />
+    <com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference
+        android:defaultValue="@string/pref_search_google_value"
+        android:key="@string/pref_search_google_key"
+        android:summaryOff="Off"
+        android:summaryOn="On"
+        android:title="@string/pref_search_google_label" />
+    <com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference
+        android:defaultValue="@string/pref_search_bing_value"
+        android:key="@string/pref_search_bing_key"
+        android:summaryOff="Off"
+        android:summaryOn="On"
+        android:title="@string/pref_search_bing_label" />
     <ListPreference
         android:defaultValue="@string/pref_search_yandex_value"
         android:summary="@string/pref_search_option_summary"
