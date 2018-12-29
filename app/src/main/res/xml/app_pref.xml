@@ -3,29 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference
-        android:defaultValue="@string/pref_search_yandex_value"
-        android:key="@string/pref_search_yandex_key"
-        android:summaryOff="Off"
-        android:summaryOn="On"
-        android:title="@string/pref_search_yandex_label" />
-    <com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference
-        android:defaultValue="@string/pref_search_google_value"
-        android:key="@string/pref_search_google_key"
-        android:summaryOff="Off"
-        android:summaryOn="On"
-        android:title="@string/pref_search_google_label" />
-    <com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference
-        android:defaultValue="@string/pref_search_bing_value"
-        android:key="@string/pref_search_bing_key"
-        android:summaryOff="Off"
-        android:summaryOn="On"
-        android:title="@string/pref_search_bing_label" />
-    <ListPreference
-        android:defaultValue="@string/pref_search_yandex_value"
+    <PreferenceCategory
+        android:title="@string/pref_search_category_title"
         android:summary="@string/pref_search_option_summary"
-        android:entries="@array/pref_search_option_labels"
-        android:entryValues="@array/pref_search_option_values"
-        android:key="@string/pref_search_key"
-        android:title="@string/pref_search_label" />
+        >
+        <com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference
+            android:defaultValue="@string/pref_search_yandex_value"
+            android:key="@string/pref_search_yandex_key"
+            android:summaryOff="Off"
+            android:summaryOn="On"
+            android:title="@string/pref_search_yandex_label" />
+        <com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference
+            android:defaultValue="@string/pref_search_google_value"
+            android:key="@string/pref_search_google_key"
+            android:summaryOff="Off"
+            android:summaryOn="On"
+            android:title="@string/pref_search_google_label" />
+        <com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference
+            android:defaultValue="@string/pref_search_bing_value"
+            android:key="@string/pref_search_bing_key"
+            android:summaryOff="Off"
+            android:summaryOn="On"
+            android:title="@string/pref_search_bing_label" />
+    </PreferenceCategory>
+
 </PreferenceScreen>

@@ -4,10 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
+    android:id="@+id/fragments_container"
     tools:context=".MainActivity">
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/activity_settings"
-        android:name="com.beloushkin.android.learn.assigment_1_2.screens.SettingsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+
 </FrameLayout>

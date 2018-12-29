@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.SettingsFragment">
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_settings"
+    >
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/app_settings"
-        android:name="com.beloushkin.android.learn.assigment_1_2.screens.SettingsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+</LinearLayout>
 
-</FrameLayout>
+

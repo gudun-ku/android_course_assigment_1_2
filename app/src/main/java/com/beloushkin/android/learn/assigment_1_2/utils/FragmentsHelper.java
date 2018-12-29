@@ -8,7 +8,7 @@ public class FragmentsHelper {
 
     public static void replaceFragment(FragmentActivity fragmentActivity
             , Fragment fragment, int containerId) {
-        fragmentActivity.getSupportFragmentManager()
+                 fragmentActivity.getSupportFragmentManager()
                 .beginTransaction()
                 .replace(containerId, fragment)
                 .commit();
@@ -17,7 +17,7 @@ public class FragmentsHelper {
 
     public static void replaceFragmentWithBack(FragmentActivity fragmentActivity
             , Fragment fragment, int containerId) {
-        fragmentActivity.getSupportFragmentManager()
+                 fragmentActivity.getSupportFragmentManager()
                 .beginTransaction()
                 .replace(containerId, fragment)
                 .addToBackStack(null)
