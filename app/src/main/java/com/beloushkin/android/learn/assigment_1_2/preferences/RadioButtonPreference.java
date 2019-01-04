@@ -14,7 +14,8 @@ import com.beloushkin.android.learn.assigment_1_2.R;
  * Radio Button preference
  */
 public class RadioButtonPreference extends Preference {
-    interface OnRadioButtonClickedListener {
+
+    public interface OnRadioButtonClickedListener {
         /**
          * Called when this preference needs to be saved its state.
          *
@@ -75,5 +76,9 @@ public class RadioButtonPreference extends Preference {
             mRadioButton.setChecked(selected);
         }
         notifyChanged();
+    }
+
+    public boolean isSelected() {
+        return mIsSelected;
     }
 }
