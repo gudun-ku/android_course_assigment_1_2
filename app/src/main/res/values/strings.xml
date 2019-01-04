@@ -8,7 +8,7 @@
 
     <string name="pref_search_engine_option_key" translatable="false">def_search_engine</string>
     <!-- Label for the search engine preference -->
-    <string name="pref_search_option_label">Default search engine</string>
+    <string name="pref_search_engine_option_label">Default search engine</string>
     <!-- Value for the search engine preference summary -->
     <string name="pref_search_option_summary">Current search engine</string>
 
@@ -30,7 +30,7 @@
 
     <string-array name="array_search_engine_labels">
         <item>@string/pref_search_yandex_label</item>
-        <item>@string/pref_search_google_value</item>
+        <item>@string/pref_search_google_label</item>
         <item>@string/pref_search_bing_label</item>
     </string-array>
 

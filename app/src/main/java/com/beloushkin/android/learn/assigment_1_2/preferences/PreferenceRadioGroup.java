@@ -78,9 +78,9 @@ public class PreferenceRadioGroup
             CharSequence value = entries[i];
             RadioButton radioButton = (RadioButton) inflater.inflate(R.layout.preference_radiobutton, null);
             radioButton.setText(value);
-            radioButton.setId(i);
+            radioButton.setId(i + 1);
             if (value.equals(savedValue)) {
-                indexOfSavedPreference = i;
+                indexOfSavedPreference = i + 1;
             }
             radioGroup.addView(radioButton, layoutParams);
         }
