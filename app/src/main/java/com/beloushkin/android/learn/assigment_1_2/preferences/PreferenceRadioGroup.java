@@ -16,6 +16,7 @@ public class PreferenceRadioGroup
     private CharSequence[] entries;
     private CharSequence[] entryValues;
     private CharSequence selectedValue;
+    private CharSequence summary;
 
     public PreferenceRadioGroup(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -80,7 +81,7 @@ public class PreferenceRadioGroup
             radioButton.setText(value);
             radioButton.setId(i + 1);
             if (value.equals(savedValue)) {
-                indexOfSavedPreference = i + 1;
+                indexOfSavedPreference = i;
             }
             radioGroup.addView(radioButton, layoutParams);
         }
@@ -95,8 +96,18 @@ public class PreferenceRadioGroup
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton selected = (RadioButton) holder.findViewById(checkedId);
                 selectedValue = selected.getText();
+                persistString(selectedValue.toString());
             }
         });
     }
 
+    @Override
+    public void setSummary(CharSequence summary) {
+        this.summary = summary;
+    }
+
+    @Override
+    public CharSequence getSummary() {
+        return summary;
+    }
 }

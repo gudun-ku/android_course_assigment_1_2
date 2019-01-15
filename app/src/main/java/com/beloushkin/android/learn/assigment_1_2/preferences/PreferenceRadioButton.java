@@ -13,7 +13,7 @@ import com.beloushkin.android.learn.assigment_1_2.R;
 /**
  * Radio Button preference
  */
-public class RadioButtonPreference extends Preference {
+public class PreferenceRadioButton extends Preference {
 
     public interface OnRadioButtonClickedListener {
         /**
@@ -21,7 +21,7 @@ public class RadioButtonPreference extends Preference {
          *
          * @param preference This preference.
          */
-        void onRadioButtonClicked(RadioButtonPreference preference);
+        void onRadioButtonClicked(PreferenceRadioButton preference);
     }
 
     private boolean mIsSelected;
@@ -34,15 +34,15 @@ public class RadioButtonPreference extends Preference {
         }
     };
 
-    public RadioButtonPreference(final Context context) {
+    public PreferenceRadioButton(final Context context) {
         this(context, null);
     }
 
-    public RadioButtonPreference(final Context context, final AttributeSet attrs) {
+    public PreferenceRadioButton(final Context context, final AttributeSet attrs) {
         this(context, attrs, android.R.attr.preferenceStyle);
     }
 
-    public RadioButtonPreference(final Context context, final AttributeSet attrs,
+    public PreferenceRadioButton(final Context context, final AttributeSet attrs,
                                  final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setWidgetLayoutResource(R.layout.preference_radiobutton);

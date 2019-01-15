@@ -1,25 +1,25 @@
 package com.beloushkin.android.learn.assigment_1_2.screens;
 
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.View;
-import android.widget.RadioGroup;
 
 import com.beloushkin.android.learn.assigment_1_2.R;
+import com.beloushkin.android.learn.assigment_1_2.preferences.PreferenceRadioButton;
 import com.beloushkin.android.learn.assigment_1_2.preferences.PreferenceRadioGroup;
-import com.beloushkin.android.learn.assigment_1_2.preferences.RadioButtonPreference;
 
 import java.util.ArrayList;
 
-public  class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
+public  class SettingsFragment extends PreferenceFragmentCompat implements  OnSharedPreferenceChangeListener {
 
     public static final String FRAGMENT_TAG = "my_settings_fragment";
-    private final ArrayList<RadioButtonPreference> listViewMode = new ArrayList<>();
+    private final ArrayList<PreferenceRadioButton> listViewMode = new ArrayList<>();
 
 
     public SettingsFragment() {
@@ -27,21 +27,17 @@ public  class SettingsFragment extends PreferenceFragmentCompat implements Prefe
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        Preference.OnPreferenceChangeListener listener = (Preference.OnPreferenceChangeListener) getActivity();
-        listener.onPreferenceChange(preference, newValue);
-        return true;
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getPreferenceScreen().getSharedPreferences()
+                .registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.app_pref);
-
-        PreferenceRadioGroup p = (PreferenceRadioGroup ) getPreferenceManager()
-                .findPreference(getString(R.string.pref_search_engine_option_key));
-
-        p.setOnPreferenceChangeListener(this);
+    public void onDestroy() {
+        super.onDestroy();
+        getPreferenceScreen().getSharedPreferences()
+                .unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -52,31 +48,29 @@ public  class SettingsFragment extends PreferenceFragmentCompat implements Prefe
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
 
-        //final PreferenceScreen screen = getPreferenceScreen();
-        //final int count = screen.getPreferenceCount();
-        /*
-        for (int index = 0; index < count; index++) {
-            final Preference preference = screen.getPreference(index);
-            if (preference instanceof RadioButtonPreference) {
-                final RadioButtonPreference pref = (RadioButtonPreference) preference;
-                final boolean selected = ( mSelectedSearchEngine == pref.getKey());
-                pref.setSelected(selected);
-                pref.setOnRadioButtonClickedListener(this);
+        addPreferencesFromResource(R.xml.app_pref);
+        SharedPreferences sharedPreferences = getPreferenceScreen().getSharedPreferences();
+
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        // Figure out which preference was changed
+        Preference preference = findPreference(key);
+        if (null != preference) {
+            // Updates the summary for the preference
+            if (preference instanceof PreferenceRadioGroup) {
+                String value = sharedPreferences.getString(preference.getKey(), "");
+                setPreferenceSummary(preference, value);
             }
         }
-        */
     }
 
-    /*
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
-        // Inflate the layout for this fragment
-        //View view =  inflater.inflate(R.layout.fragment_settings, container, false);
-        //return view;
+    private void setPreferenceSummary(Preference preference, String value) {
+        if (preference instanceof PreferenceRadioGroup) {
+            PreferenceRadioGroup rgPreference = (PreferenceRadioGroup) preference;
+            rgPreference.setSummary(rgPreference.getSelected());
+        }
     }
-    */
-
 
 }
