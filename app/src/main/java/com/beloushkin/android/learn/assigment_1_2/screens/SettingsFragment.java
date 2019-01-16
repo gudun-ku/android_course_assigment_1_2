@@ -60,7 +60,7 @@ public  class SettingsFragment extends PreferenceFragmentCompat implements  OnSh
         if (null != preference) {
             // Updates the summary for the preference
             if (preference instanceof PreferenceRadioGroup) {
-                String value = sharedPreferences.getString(preference.getKey(), "");
+                String value = sharedPreferences.getString(preference.getKey(), getString(R.string.pref_search_engine_option_default));
                 setPreferenceSummary(preference, value);
             }
         }

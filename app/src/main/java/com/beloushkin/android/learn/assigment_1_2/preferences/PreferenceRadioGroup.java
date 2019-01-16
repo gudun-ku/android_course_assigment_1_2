@@ -82,11 +82,12 @@ public class PreferenceRadioGroup
 
 
         for (int i = 0; i < lengthOfEntries; i++) {
-            CharSequence value = entries[i];
+            CharSequence label = entries[i];
+            CharSequence value = entryValues[i];
             RadioButton radioButton = (RadioButton) inflater.inflate(R.layout.preference_radiobutton, null);
 
 
-            radioButton.setText(value);
+            radioButton.setText(label);
             radioButton.setId(i + 1);
             if (value.equals(savedValue)) {
                 indexOfSavedPreference = i;
@@ -103,7 +104,7 @@ public class PreferenceRadioGroup
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton selected = (RadioButton) holder.findViewById(checkedId);
-                selectedValue = selected.getText();
+                selectedValue = entryValues[checkedId -1];
                 persistString(selectedValue.toString());
             }
         });
