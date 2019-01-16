@@ -74,10 +74,18 @@ public class PreferenceRadioGroup
         LayoutInflater inflater = LayoutInflater.from(getContext());
         // Create the layout params for radio buttons
         RadioGroup.LayoutParams layoutParams = new RadioGroup.LayoutParams(
-                RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT, 1f);
+                RadioGroup.LayoutParams.MATCH_PARENT,
+                RadioGroup.LayoutParams.WRAP_CONTENT,
+                1f);
+        layoutParams.setMargins(50,20,50,20);
+
+
+
         for (int i = 0; i < lengthOfEntries; i++) {
             CharSequence value = entries[i];
             RadioButton radioButton = (RadioButton) inflater.inflate(R.layout.preference_radiobutton, null);
+
+
             radioButton.setText(value);
             radioButton.setId(i + 1);
             if (value.equals(savedValue)) {
