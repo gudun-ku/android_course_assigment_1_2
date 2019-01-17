@@ -79,8 +79,6 @@ public class PreferenceRadioGroup
                 1f);
         layoutParams.setMargins(50,20,50,20);
 
-
-
         for (int i = 0; i < lengthOfEntries; i++) {
             CharSequence label = entries[i];
             CharSequence value = entryValues[i];

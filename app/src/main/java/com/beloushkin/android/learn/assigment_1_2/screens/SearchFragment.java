@@ -13,19 +13,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.beloushkin.android.learn.assigment_1_2.R;
-
-import java.net.URLEncoder;
 
 public class SearchFragment extends Fragment
         implements Button.OnClickListener,  SharedPreferences.OnSharedPreferenceChangeListener  {
 
     public static final String FRAGMENT_TAG = "my_search_fragment";
 
+    private TextView mSearchEngineTxt;
     private Button mSearchButton;
     private EditText mSearchQueryEt;
-    private String strSearchUrl;
+    private String strSearchUrl, strSearchSummary;
+
 
     public SearchFragment() {
         // Required empty public constructor
@@ -34,6 +35,24 @@ public class SearchFragment extends Fragment
     private void setSearchEngineFromPreferences(SharedPreferences sharedPreferences) {
         strSearchUrl = sharedPreferences.getString(getString(R.string.pref_search_engine_option_key),
                 getString(R.string.pref_search_engine_option_default));
+
+        strSearchSummary = getPreferenceLabelForValue(strSearchUrl);
+    }
+
+    private String getPreferenceLabelForValue(String strVal) {
+
+        CharSequence[] entryValues = getResources().getStringArray( R.array.array_search_engine_values);
+        CharSequence[] entryLabels = getResources().getStringArray( R.array.array_search_engine_labels);
+        int pIdx = 0;
+        for(int i = 0; i < entryValues.length; i++)
+        {
+            if (strVal.equals(entryValues[i])) {
+                pIdx = i;
+                break;
+            }
+        }
+        return entryLabels[pIdx].toString();
+
     }
 
     @Override
@@ -62,6 +81,10 @@ public class SearchFragment extends Fragment
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_search, container, false);
+
+        mSearchEngineTxt = view.findViewById(R.id.tv_search_engine);
+        mSearchEngineTxt.setText(getString(R.string.pref_search_engine_option_label) + " " +
+               strSearchSummary );
 
         mSearchQueryEt = view.findViewById(R.id.ed_query_txt);
         mSearchButton = view.findViewById(R.id.btn_search);

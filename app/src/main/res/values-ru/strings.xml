@@ -8,7 +8,7 @@
     <string name="txt_logo_label">Помощник искателя</string>
 
     <!-- Label for the search preference -->
-    <string name="pref_search_engine_option_label">Служба поиска по умолчанию</string>
+    <string name="pref_search_engine_option_label">Искать используя:</string>
     <!-- Value for the search preference summary -->
     <string name="pref_search_option_summary">Текущая служба поиска</string>
 
