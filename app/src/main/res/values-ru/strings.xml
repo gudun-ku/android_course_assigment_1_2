@@ -16,6 +16,7 @@
     <string name="pref_search_yandex_label">Поиск от Яндекс</string>
     <string name="pref_search_google_label">Поиск от Google</string>
     <string name="pref_search_bing_label">Поиск от Microsoft(Bing)</string>
+    <string name="pref_search_engine_default_label">@string/pref_search_yandex_label</string>
 
     <string name="btn_action_search">Найти!</string>
 

@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.beloushkin.android.learn.assigment_1_2.R;
 
@@ -16,7 +17,10 @@ public class PreferenceRadioGroup
     private CharSequence[] entries;
     private CharSequence[] entryValues;
     private CharSequence selectedValue;
+    private CharSequence selectedLabel;
     private CharSequence summary;
+
+    private TextView tvSummary;
 
     public PreferenceRadioGroup(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -52,7 +56,10 @@ public class PreferenceRadioGroup
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
+        tvSummary = (TextView) holder.findViewById(R.id.radio_group_pref_summary);
+
         RadioGroup radioGroup = (RadioGroup) holder.findViewById(R.id.widget_radio_group);
+
         if (radioGroup != null) {
             addRadioButtons(radioGroup);
             setRadioGroupListener(radioGroup, holder);
@@ -61,6 +68,10 @@ public class PreferenceRadioGroup
 
     public String getSelected() {
         return (selectedValue == null) ? "" : selectedValue.toString();
+    }
+
+    public String getSelectedLabel() {
+        return (selectedLabel == null) ? "" : selectedLabel.toString();
     }
 
     private void addRadioButtons(RadioGroup radioGroup) {
@@ -93,6 +104,7 @@ public class PreferenceRadioGroup
             radioGroup.addView(radioButton, layoutParams);
         }
         ((RadioButton) radioGroup.getChildAt(indexOfSavedPreference)).setChecked(true);
+        tvSummary.setText(entries[indexOfSavedPreference]);
     }
 
 
@@ -101,9 +113,10 @@ public class PreferenceRadioGroup
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton selected = (RadioButton) holder.findViewById(checkedId);
                 selectedValue = entryValues[checkedId -1];
+                selectedLabel = entries[checkedId -1];
                 persistString(selectedValue.toString());
+
             }
         });
     }
@@ -111,6 +124,8 @@ public class PreferenceRadioGroup
     @Override
     public void setSummary(CharSequence summary) {
         this.summary = summary;
+        tvSummary.setText(summary);
+
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.beloushkin.android.learn.assigment_1_2.screens;
 
 
-import android.app.SearchManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -18,7 +17,7 @@ import android.widget.TextView;
 import com.beloushkin.android.learn.assigment_1_2.R;
 
 public class SearchFragment extends Fragment
-        implements Button.OnClickListener,  SharedPreferences.OnSharedPreferenceChangeListener  {
+        implements Button.OnClickListener  {
 
     public static final String FRAGMENT_TAG = "my_search_fragment";
 
@@ -63,17 +62,11 @@ public class SearchFragment extends Fragment
         startActivity(intent);
     }
 
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(getString(R.string.pref_search_engine_option_key))) {
-            setSearchEngineFromPreferences(sharedPreferences);
-        }
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setSearchEngineFromPreferences(PreferenceManager.getDefaultSharedPreferences(getContext()));
+
     }
 
     @Override
@@ -82,6 +75,7 @@ public class SearchFragment extends Fragment
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_search, container, false);
 
+        setSearchEngineFromPreferences(PreferenceManager.getDefaultSharedPreferences(getContext()));
         mSearchEngineTxt = view.findViewById(R.id.tv_search_engine);
         mSearchEngineTxt.setText(getString(R.string.pref_search_engine_option_label) + " " +
                strSearchSummary );
@@ -92,5 +86,6 @@ public class SearchFragment extends Fragment
 
         return view;
     }
+
 
 }
