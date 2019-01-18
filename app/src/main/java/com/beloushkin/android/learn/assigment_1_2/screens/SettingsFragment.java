@@ -47,10 +47,8 @@ public  class SettingsFragment extends PreferenceFragmentCompat implements  OnSh
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
-
         addPreferencesFromResource(R.xml.app_pref);
         SharedPreferences sharedPreferences = getPreferenceScreen().getSharedPreferences();
-
     }
 
     @Override

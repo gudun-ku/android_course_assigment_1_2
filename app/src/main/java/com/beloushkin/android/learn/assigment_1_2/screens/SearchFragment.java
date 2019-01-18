@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +16,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.beloushkin.android.learn.assigment_1_2.R;
+import com.beloushkin.android.learn.assigment_1_2.utils.ToastHelper;
 
 public class SearchFragment extends Fragment
         implements Button.OnClickListener  {
 
     public static final String FRAGMENT_TAG = "my_search_fragment";
 
+    private static final ToastHelper mToastHelper = new ToastHelper();
+
     private TextView mSearchEngineTxt;
     private Button mSearchButton;
     private EditText mSearchQueryEt;
     private String strSearchUrl, strSearchSummary;
+
 
 
     public SearchFragment() {
@@ -57,6 +62,10 @@ public class SearchFragment extends Fragment
     @Override
     public void onClick(View view) {
         String strToSearch = mSearchQueryEt.getText().toString();
+        if (TextUtils.isEmpty(strToSearch)) {
+            mToastHelper.showMessage(getString(R.string.msg_empty_query),getContext());
+            return;
+        }
         Uri uri = Uri.parse(strSearchUrl + strToSearch);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
@@ -66,6 +75,7 @@ public class SearchFragment extends Fragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 

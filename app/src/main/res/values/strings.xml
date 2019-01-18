@@ -4,6 +4,7 @@
     <string name="title_main_menu_search">Search</string>
     <string name="title_main_menu_logout">Sign out</string>
     <string name="txt_logo_label">Search Companion</string>
+    <string name="msg_empty_query">Query mustn\'t be empty</string>
 
 
     <!-- Key for the search engine preference -->
@@ -27,6 +28,7 @@
     <string name="pref_search_google_value" translatable="false">https://www.google.com/search?q=</string>
     <string name="pref_search_bing_value" translatable="false">https://www.bing.com/search?q=</string>
     <string name="btn_action_search">Search!</string>
+
 
 
     <string-array name="array_search_engine_labels">

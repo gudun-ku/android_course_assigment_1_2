@@ -2,6 +2,8 @@ package com.beloushkin.android.learn.assigment_1_2.utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+
 import com.beloushkin.android.learn.assigment_1_2.screens.MainFragment;
 import com.beloushkin.android.learn.assigment_1_2.screens.SearchFragment;
 import com.beloushkin.android.learn.assigment_1_2.screens.SettingsFragment;
@@ -52,5 +54,16 @@ public class FragmentsHelper {
             fragment = new SearchFragment();
         }
         return fragment;
+    }
+
+    public static boolean allowAppExit (FragmentActivity fragmentActivity) {
+        FragmentManager fragmentManager =
+                fragmentActivity.getSupportFragmentManager();
+        if(fragmentManager.getBackStackEntryCount() == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
