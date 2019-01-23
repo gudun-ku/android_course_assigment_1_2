@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //mToastHelper.showMessage(item.getTitle().toString(),this);
+        mToastHelper.showMessage(item.getTitle().toString(),this);
         int itemId = item.getItemId();
         Fragment fragment = FragmentsHelper.getMainFragment(this);
         switch (itemId) {
