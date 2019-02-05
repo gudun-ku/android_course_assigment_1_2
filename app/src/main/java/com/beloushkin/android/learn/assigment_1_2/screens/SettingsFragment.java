@@ -16,14 +16,21 @@ import com.beloushkin.android.learn.assigment_1_2.preferences.PreferenceRadioGro
 
 import java.util.ArrayList;
 
-public  class SettingsFragment extends PreferenceFragmentCompat implements  OnSharedPreferenceChangeListener {
+public  class SettingsFragment extends PreferenceFragmentCompat implements
+        ITaggedFragment, OnSharedPreferenceChangeListener {
 
     public static final String FRAGMENT_TAG = "my_settings_fragment";
+
     private final ArrayList<PreferenceRadioButton> listViewMode = new ArrayList<>();
 
 
     public SettingsFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public String getFragmentTag() {
+        return FRAGMENT_TAG;
     }
 
     @Override

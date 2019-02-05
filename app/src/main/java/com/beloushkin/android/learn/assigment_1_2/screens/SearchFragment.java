@@ -19,11 +19,10 @@ import com.beloushkin.android.learn.assigment_1_2.R;
 import com.beloushkin.android.learn.assigment_1_2.utils.ToastHelper;
 
 public class SearchFragment extends Fragment
-        implements Button.OnClickListener  {
+        implements ITaggedFragment, Button.OnClickListener  {
 
     public static final String FRAGMENT_TAG = "my_search_fragment";
-
-    private static final ToastHelper mToastHelper = new ToastHelper();
+      private static final ToastHelper mToastHelper = new ToastHelper();
 
     private TextView mSearchEngineTxt;
     private Button mSearchButton;
@@ -34,6 +33,11 @@ public class SearchFragment extends Fragment
 
     public SearchFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public String getFragmentTag() {
+        return FRAGMENT_TAG;
     }
 
     private void setSearchEngineFromPreferences(SharedPreferences sharedPreferences) {

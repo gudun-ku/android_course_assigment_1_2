@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.beloushkin.android.learn.assigment_1_2.R;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements ITaggedFragment {
 
     public static final String FRAGMENT_TAG = "my_main_fragment";
 
@@ -20,6 +20,10 @@ public class MainFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public String getFragmentTag() {
+        return FRAGMENT_TAG;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
